@@ -25,25 +25,21 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ResuableCard(
                     colour: activeCardColour,
-                    cardChild: Column(
-                      children: <Widget>[
-                        Icon(
-                          FontAwesomeIcons.mars,
-                          size: 80.0,
-                        ),
-                        SizedBox(height: 15.0),
-                        Text(
-                          "Male",
-                          style: TextStyle(
-                            fontSize: 18.0,
-                            color: Color(0xFF8D8E98),
-                          ),
-                        )
-                      ],
+                    cardChild: IconContainer(
+                      icon: FontAwesomeIcons.mars,
+                      label: "MALE",
                     ),
                   ),
                 ),
-                Expanded(child: ResuableCard(colour: Color(0xFF1D1E33))),
+                Expanded(
+                  child: ResuableCard(
+                    colour: activeCardColour,
+                    cardChild: IconContainer(
+                      icon: FontAwesomeIcons.venus,
+                      label: "FEMALE",
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -74,6 +70,34 @@ class _InputPageState extends State<InputPage> {
           )
         ],
       ),
+    );
+  }
+}
+
+class IconContainer extends StatelessWidget {
+  IconContainer({this.icon, this.label});
+
+  final IconData icon;
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Icon(
+          icon,
+          size: 80.0,
+        ),
+        SizedBox(height: 15.0),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 18.0,
+            color: Color(0xFF8D8E98),
+          ),
+        )
+      ],
     );
   }
 }
