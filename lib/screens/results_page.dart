@@ -5,6 +5,16 @@ import '../components/bottom_container_button.dart';
 import '../constants.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage({
+    @required this.bmiResult,
+    @required this.resultText,
+    @required this.interpretation,
+  });
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,12 +43,19 @@ class ResultsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text('NORMAL', style: kResultTextStyle),
+                  Text(resultText, style: kResultTextStyle),
                   Text(
-                    '26.7',
+                    bmiResult,
                     style: kBMITextStyle,
                   ),
-                  Text('Description', style: kBodyTextStyle),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      interpretation,
+                      style: kBodyTextStyle,
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
                 ],
               ),
             ),

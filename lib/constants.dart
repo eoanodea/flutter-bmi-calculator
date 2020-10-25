@@ -38,4 +38,4 @@ const kBMITextStyle = TextStyle(
   fontSize: 100.0,
 );
 
-const kBodyTextStyle = TextStyle(fontSize: 22.0);
+const kBodyTextStyle = TextStyle(fontSize: 20.0);
