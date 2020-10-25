@@ -18,6 +18,7 @@ class _InputPageState extends State<InputPage> {
 
   Gender selectedGener;
 
+  int height = 180;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,6 +26,7 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI CALCULATOR'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
             child: Row(
@@ -70,7 +72,40 @@ class _InputPageState extends State<InputPage> {
             child: ReuseableCard(
               colour: kActiveCardColour,
               cardChild: Column(
-                children: <Widget>[Text('HEIGHT')],
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'HEIGHT',
+                    style: kLabelTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        height.toString(),
+                        style: kNumberTextStyle,
+                      ),
+                      Text(
+                        "cm",
+                        style: kLabelTextStyle,
+                      ),
+                    ],
+                  ),
+                  Slider(
+                    value: height.toDouble(),
+                    min: 120.0,
+                    max: 220.0,
+                    activeColor: kBottomContainerColour,
+                    inactiveColor: kLabelColour,
+                    onChanged: (double value) => {
+                      setState(() {
+                        height = value.toInt();
+                      })
+                    },
+                  ),
+                ],
               ),
             ),
           ),
