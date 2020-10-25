@@ -8,7 +8,7 @@ Based on a tutorial by [London App Brewery on Linkedin Learning](https://www.lin
 
 ## Demo
 
-Coming soon
+<img src="https://github.com/eoanodea/flutter-bmi-calculator/blob/master/demo.gif" alt="Finished App" width="300">
 
 ## What you need to run this code
 
