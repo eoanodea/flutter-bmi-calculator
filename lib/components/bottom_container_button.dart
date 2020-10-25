@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 class BottomContainerButton extends StatelessWidget {
   BottomContainerButton({@required this.onPress, @required this.title});
