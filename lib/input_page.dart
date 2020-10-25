@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bmi_calculator/resuable_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import 'constants.dart';
 import 'icon_content.dart';
 
-const bottomContainerHeight = 80.0;
-const activeCardColour = Color(0xFF1D1E33);
-const bottomContainerColour = Color(0xFFEB1555);
+enum Gender { male, female }
 
 class InputPage extends StatefulWidget {
   @override
@@ -14,6 +13,11 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Color maleCardColour = inactiveCardColour;
+  Color femaleCardColour = inactiveCardColour;
+
+  Gender selectedGener;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,8 +30,15 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: [
                 Expanded(
-                  child: ResuableCard(
-                    colour: activeCardColour,
+                  child: ReuseableCard(
+                    onPress: () {
+                      setState(() {
+                        selectedGener = Gender.male;
+                      });
+                    },
+                    colour: selectedGener == Gender.male
+                        ? activeCardColour
+                        : inactiveCardColour,
                     cardChild: IconContainer(
                       icon: FontAwesomeIcons.mars,
                       label: "MALE",
@@ -35,30 +46,44 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
                 Expanded(
-                  child: ResuableCard(
-                    colour: activeCardColour,
+                  child: ReuseableCard(
+                    onPress: () {
+                      setState(
+                        () {
+                          selectedGener = Gender.female;
+                        },
+                      );
+                    },
+                    colour: selectedGener == Gender.female
+                        ? activeCardColour
+                        : inactiveCardColour,
                     cardChild: IconContainer(
                       icon: FontAwesomeIcons.venus,
                       label: "FEMALE",
                     ),
                   ),
-                ),
+                )
               ],
             ),
           ),
           Expanded(
-            child: ResuableCard(colour: activeCardColour),
+            child: ReuseableCard(
+              colour: activeCardColour,
+              cardChild: Column(
+                children: <Widget>[Text('HEIGHT')],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
-                  child: ResuableCard(
+                  child: ReuseableCard(
                     colour: Color(0xFF1D1E33),
                   ),
                 ),
                 Expanded(
-                  child: ResuableCard(
+                  child: ReuseableCard(
                     colour: Color(0xFF1D1E33),
                   ),
                 ),
