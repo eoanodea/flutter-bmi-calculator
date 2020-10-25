@@ -13,8 +13,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleCardColour = inactiveCardColour;
-  Color femaleCardColour = inactiveCardColour;
+  Color maleCardColour = kInactiveCardColour;
+  Color femaleCardColour = kInactiveCardColour;
 
   Gender selectedGener;
 
@@ -37,8 +37,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGener == Gender.male
-                        ? activeCardColour
-                        : inactiveCardColour,
+                        ? kActiveCardColour
+                        : kInactiveCardColour,
                     cardChild: IconContainer(
                       icon: FontAwesomeIcons.mars,
                       label: "MALE",
@@ -55,8 +55,8 @@ class _InputPageState extends State<InputPage> {
                       );
                     },
                     colour: selectedGener == Gender.female
-                        ? activeCardColour
-                        : inactiveCardColour,
+                        ? kActiveCardColour
+                        : kInactiveCardColour,
                     cardChild: IconContainer(
                       icon: FontAwesomeIcons.venus,
                       label: "FEMALE",
@@ -68,7 +68,7 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReuseableCard(
-              colour: activeCardColour,
+              colour: kActiveCardColour,
               cardChild: Column(
                 children: <Widget>[Text('HEIGHT')],
               ),
@@ -91,10 +91,10 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Container(
-            color: bottomContainerColour,
+            color: kBottomContainerColour,
             margin: EdgeInsets.only(top: 10.0),
             width: double.infinity,
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           )
         ],
       ),
